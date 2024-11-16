@@ -56,7 +56,7 @@ SSH_LOCAL_PATH=dist
 
 **.gitignore**
 
-注意实现：敏感信息内容注意添加到忽略文件中，避免上传到外部去
+**注意：敏感信息内容注意添加到忽略文件中，避免上传到外部去**
 
 ```sh
 .env.production
