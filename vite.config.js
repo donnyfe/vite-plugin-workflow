@@ -1,15 +1,15 @@
-import path from 'path'
 import { defineConfig } from 'vite'
+import path from 'path'
 import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [dts()],
 	resolve: {
 		alias: {
 			'@': path.resolve('./src')
 		}
 	},
+	plugins: [dts()],
 	build: {
 		outDir: 'dist',
 		lib: {
@@ -19,7 +19,7 @@ export default defineConfig({
 			fileName: format => `index.${format}.js`
 		},
 		rollupOptions: {
-			external: ['fs', 'path', 'child_process', 'node-ssh']
+			external: ['fs', 'path', 'child_process', 'node-ssh'] // 外部化 Node.js 内置模块
 		}
 	}
 })
