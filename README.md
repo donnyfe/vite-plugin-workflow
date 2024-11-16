@@ -10,7 +10,11 @@
 ## 使用
 
 ```bash
-pnpm install vite-plugin-workflow
+npm install vite-plugin-workflow -D
+
+# or
+
+pnpm add vite-plugin-workflow -D
 ```
 
 **vite.config.js**
