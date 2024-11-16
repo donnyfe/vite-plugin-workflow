@@ -3,10 +3,10 @@
 	"version": "1.0.0",
 	"description": "一个用于优化工作流的 vite 插件包，提供多种实用vite插件",
 	"author": "donnyfe",
-	"homepage": "https://github.com/idonnyfe/vite-plugin-workflow/README.md",
+	"homepage": "https://github.com/donnyfe/vite-plugin-workflow/README.md",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/idonnyfe/vite-plugin-workflow.git"
+		"url": "https://github.com/donnyfe/vite-plugin-workflow"
 	},
 	"keywords": [
 		"vite-plugin-workflow",
