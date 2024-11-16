@@ -13,7 +13,7 @@
 		"workflow",
 		"vite-plugin",
 		"deploy server",
-		"deploy"
+		"deploy npm"
 	],
 	"files": [
 		"dist"
@@ -22,7 +22,7 @@
 	"type": "module",
 	"main": "./dist/index.cjs.js",
 	"module": "./dist/index.es.js",
-	"types": "./dist/types/index.d.ts",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
