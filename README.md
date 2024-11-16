@@ -45,6 +45,8 @@ export default defineConfig({
 
 **.env.production**
 
+敏感信息填写在变量环境`.env.production`中，统一管理，同时将`.env.production`添加到`.gitignore`忽略文件中
+
 ```sh
 SSH_HOST=127.0.0.1
 SSH_PORT=22

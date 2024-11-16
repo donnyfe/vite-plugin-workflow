@@ -31,6 +31,8 @@ async function deploy(options: NpmOptions) {
 
 		console.log('🎉 NPM发布成功')
 	} catch (error) {
+		console.log('🚨 NPM发布失败')
+		console.log(error)
 		throw error
 	}
 
@@ -42,6 +44,7 @@ async function deploy(options: NpmOptions) {
 export function deployToNpm(options: NpmOptions): Plugin {
 	return {
 		name: 'vite-plugin-workflow-deploy-to-npm',
+		apply: 'build',
 		closeBundle: async () => {
 			await deploy(options)
 		}
