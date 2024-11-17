@@ -2,17 +2,11 @@ import type { Plugin } from 'vite'
 import type { NpmOptions } from '@/types'
 import { execCommand } from '@/utils'
 
-async function checkNpmLogin() {
-	try {
-		const { stdout } = await execCommand('npm whoami')
-		return stdout.trim() !== ''
-	} catch (error) {
-		return false
-	}
-}
-
-async function deploy(options: NpmOptions) {}
-
+/**
+ * 发布到NPM
+ * @param options - 配置
+ * @returns - 插件
+ */
 export function deployToNpm(options: NpmOptions): Plugin {
 	return {
 		name: 'vite-plugin-workflow-deploy-to-npm',
