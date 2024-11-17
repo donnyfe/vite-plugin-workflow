@@ -11,6 +11,6 @@ export interface ServerOptions {
 
 export interface NpmOptions {
 	defaultRegistry?: string // 默认源
-	publishRegistry?: string // 发布源
-	publishScope?: string // 发布范围
+	registry?: string // 发布源
+	access?: string // 发布范围
 }

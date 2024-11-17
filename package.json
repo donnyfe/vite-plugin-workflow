@@ -30,6 +30,10 @@
 			"types": "./dist/index.d.ts"
 		}
 	},
+	"publishConfig": {
+		"tag": "alpha",
+		"access": "public"
+	},
 	"scripts": {
 		"clean": "rm -rf dist",
 		"build": "npm run clean && vite build --config vite.config.js"
