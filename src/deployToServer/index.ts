@@ -27,7 +27,8 @@ export function deployToServer(options: ServerOptions): Plugin {
 					privateKey: key
 				})
 
-				console.log('🚀 连接服务器成功')
+				console.log('\n')
+				console.log('🔗 连接服务器成功')
 
 				// 1. 备份
 				if (options.backup) {

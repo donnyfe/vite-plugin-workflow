@@ -5,7 +5,6 @@
 ## 功能
 
 - 部署服务器
-- 部署 NPM
 
 ## 使用
 
@@ -21,22 +20,12 @@ pnpm add vite-plugin-workflow -D
 
 ```js
 import { mergeConfig, loadEnv } from 'vite'
-import { deployToServer, deployToNpm } from 'vite-plugin-workflow'
+import { deployToServer } from 'vite-plugin-workflow'
 
 const env = loadEnv(process.env.NODE_ENV, process.cwd(), '')
 
 export default defineConfig({
 	plugins: [
-		// 部署到NPM
-		deployToNpm({
-			// 默认淘宝镜像源(可选), 设置参数后，npm 发布完成会自动切换到该镜像源
-			defaultRegistry: 'https://registry.npmmirror.com',
-			// 发布镜像源(可选)
-			registry: 'https://registry.npmjs.org',
-			// 公开作用域(可选)
-			access: 'public'
-		}),
-
 		// 部署到服务器
 		deployToServer({
 			host: env.SSH_HOST,
