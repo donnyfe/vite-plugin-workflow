@@ -31,8 +31,11 @@
 		}
 	},
 	"publishConfig": {
+		"registry": "https://registry.npmjs.org",
 		"tag": "alpha",
-		"access": "public"
+		"access": "public",
+		"directory": "dist",
+		"scope": "@idonnyfe"
 	},
 	"scripts": {
 		"clean": "rm -rf dist",
