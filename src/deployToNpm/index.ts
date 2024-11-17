@@ -18,11 +18,13 @@ export function deployToNpm(options: NpmOptions): Plugin {
 			try {
 				// 1. 切换发布源
 				await execCommand(`npm config set registry=${publishRegistry}`)
+				console.log('\n')
 				console.log(`🔗 切换NPM发布源为: ${publishRegistry}`)
 
 				// 2. 检测登录状态并处理登录
 				let isLoggedIn = false
 				try {
+					// 未登录前执行 npm whoami 命令会报错, 所以通过捕获错误来判断是否登录
 					const { stdout } = await execCommand('npm whoami')
 					const username = stdout.trim()
 					console.log('\n')
@@ -53,6 +55,17 @@ export function deployToNpm(options: NpmOptions): Plugin {
 				// 4. 发布
 				const publishCmd = access ? `npm publish --access ${access}` : 'npm publish'
 				await execCommand(publishCmd)
+
+				/**
+				 * 在 prepublishOnly 钩子执行时强制退出进程, 解决脚本有时候不会自动终止的问题
+				 * 因为 prepublishOnly 钩子执行时，vite 的 build 流程已经结束，
+				 * 所以需要强制退出进程，否则会导致后续的插件执行流程受到影响
+				 * @link https://stackoverflow.com/questions/52861210/node-js-command-line-script-sometimes-does-not-terminate
+				 */
+				if (process.env.npm_lifecycle_event === 'prepublishOnly') {
+					process.exit(0)
+				}
+				console.log('\n')
 				console.log('🎉 NPM发布成功')
 			} catch (error) {
 				console.error('🚨 NPM发布流程失败:', error)
