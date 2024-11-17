@@ -6,7 +6,7 @@
 	"homepage": "https://github.com/donnyfe/vite-plugin-workflow/README.md",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/donnyfe/vite-plugin-workflow"
+		"url": "git+https://github.com/donnyfe/vite-plugin-workflow.git"
 	},
 	"keywords": [
 		"vite-plugin-workflow",
