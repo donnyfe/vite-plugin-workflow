@@ -29,9 +29,12 @@ export default defineConfig({
 	plugins: [
 		// 部署到NPM
 		deployToNpm({
-			defaultRegistry: env.NPM_DEFAULT_REGISTRY,
-			publishRegistry: env.NPM_PUBLISH_REGISTRY,
-			publishScope: env.NPM_PUBLISH_SCOPE
+			// 默认淘宝镜像源(可选), 设置参数后，npm 发布完成会自动切换到该镜像源
+			defaultRegistry: 'https://registry.npmmirror.com',
+			// 发布镜像源(可选)
+			registry: 'https://registry.npmjs.org',
+			// 公开作用域(可选)
+			access: 'public'
 		}),
 
 		// 部署到服务器
