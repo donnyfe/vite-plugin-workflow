@@ -17,7 +17,9 @@ export function deployToNpm(options: NpmOptions): Plugin {
 			try {
 				// 1. 切换发布源
 				await execCommand(`npm config set registry=${registry}`)
-				console.log('🔗 切换NPM发布源成功')
+				console.log('\n')
+				console.log('\n')
+				console.log(`🔗 切换NPM发布源为: ${registry}`)
 			} catch (error) {
 				console.log('🚨 切换NPM发布源失败')
 				console.log(error)
@@ -53,7 +55,7 @@ export function deployToNpm(options: NpmOptions): Plugin {
 
 			// 4. 切换回默认源
 			await execCommand(`npm config set registry=${defaultRegistry}`)
-			console.log('🔗 切换回默认NPM源')
+			console.log(`🔗 已切换回默认NPM源: ${defaultRegistry}`)
 		}
 	}
 }
