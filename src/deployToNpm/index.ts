@@ -13,6 +13,7 @@ export function deployToNpm(options: NpmOptions): Plugin {
 		apply: 'build',
 		closeBundle: async () => {
 			const { defaultRegistry, registry, access } = options
+
 			try {
 				// 1. 切换发布源
 				await execCommand(`npm config set registry=${registry}`)
@@ -24,17 +25,20 @@ export function deployToNpm(options: NpmOptions): Plugin {
 			}
 
 			try {
-				// 2. 检测登录状态
-				const { stdout } = await execCommand('npm whoami')
-				const username = stdout.trim()
-				if (!username) {
+				try {
+					// 2. 检测登录状态
+					const { stdout } = await execCommand('npm whoami')
+					const username = stdout.trim()
+					console.log(`👤 当前登录用户: ${username}`)
+				} catch {
+					// whoami 命令失败说明未登录
+					console.log('⚠️ 检测到未登录NPM，正在尝试登录...')
 					await execCommand('npm login')
 					console.log('🔑 登录NPM成功')
-				} else {
-					console.log(`👤 当前登录用户: ${username}`)
 				}
 			} catch (error) {
 				console.log('🚨 NPM登录失败')
+				throw error
 			}
 
 			// 3. 发布
@@ -44,11 +48,10 @@ export function deployToNpm(options: NpmOptions): Plugin {
 				console.log('🎉 NPM发布成功')
 			} catch (error) {
 				console.log('🚨 NPM发布失败')
-				console.log(error)
 				throw error
 			}
 
-			// 切换回默认源
+			// 4. 切换回默认源
 			await execCommand(`npm config set registry=${defaultRegistry}`)
 			console.log('🔗 切换回默认NPM源')
 		}
