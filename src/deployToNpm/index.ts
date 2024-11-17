@@ -19,8 +19,15 @@ export function deployToNpm(options: NpmOptions): Plugin {
 			try {
 				// 1. 切换发布源
 				await execCommand(`npm config set registry=${publishRegistry}`)
+
 				console.log('\n')
 				console.log(`🔗 切换NPM发布源为: ${publishRegistry}`)
+				/**
+				 * 清理缓存, 解决有时候缓存导致的问题，
+				 * 会存在成功切换源后，执行npm whoami 引用的还是旧源的问题
+				 * @link https://github.com/npm/npm/issues/17722
+				 */
+				await execCommand('npm cache clean --force')
 
 				// 2. 检测登录状态并处理登录
 				let isLoggedIn = false
