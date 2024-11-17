@@ -12,6 +12,7 @@ export function deployToServer(options: ServerOptions): Plugin {
 	return {
 		name: 'vite-plugin-workflow-deploy-to-server',
 		enforce: 'post',
+		apply: 'build',
 		closeBundle: async () => {
 			// 读取私钥
 			const key = privateKey && fs.readFileSync(privateKey, 'utf8')

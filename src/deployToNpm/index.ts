@@ -11,6 +11,7 @@ export function deployToNpm(options: NpmOptions): Plugin {
 	return {
 		name: 'vite-plugin-workflow-deploy-to-npm',
 		enforce: 'post',
+		apply: 'build',
 		closeBundle: async () => {
 			const { defaultRegistry, registry, access } = options
 			// 发布源，默认使用 npm 官方镜像源
