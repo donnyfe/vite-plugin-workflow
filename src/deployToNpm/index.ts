@@ -10,7 +10,7 @@ import { execCommand } from '@/utils'
 export function deployToNpm(options: NpmOptions): Plugin {
 	return {
 		name: 'vite-plugin-workflow-deploy-to-npm',
-		apply: 'build',
+		enforce: 'post',
 		closeBundle: async () => {
 			const { defaultRegistry, registry, access } = options
 			// 发布源，默认使用 npm 官方镜像源
