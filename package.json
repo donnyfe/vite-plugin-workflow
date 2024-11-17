@@ -1,6 +1,6 @@
 {
 	"name": "@idonnyfe/vite-plugin-workflow",
-	"version": "1.0.1-alpha.7",
+	"version": "1.0.1-alpha.8",
 	"description": "一个用于优化工作流的 vite 插件包，提供多种实用vite插件",
 	"author": "donnyfe",
 	"homepage": "https://github.com/donnyfe/vite-plugin-workflow/README.md",
