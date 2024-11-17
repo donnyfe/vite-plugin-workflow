@@ -80,8 +80,9 @@ export function deployToNpm(options: NpmOptions): Plugin {
 				throw error
 			} finally {
 				// 5. 切换回默认源
-				await execCommand(`npm config set registry=${defaultRegistry}`)
-				console.log(`🔗 已切换回默认NPM源: ${defaultRegistry}`)
+				const registry = defaultRegistry || 'https://registry.npmmirror.com'
+				await execCommand(`npm config set registry=${registry}`)
+				console.log(`🔗 已切换回默认NPM源: ${registry}`)
 			}
 		}
 	}
